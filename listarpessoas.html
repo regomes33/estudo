@@ -1,0 +1,62 @@
+{% extends 'basepessoas.html'%}
+
+{% block title %}Dados{%endblock%}
+{%block content%}
+<div class="jumbotron">
+    <div class="container">
+        <h2>Filtrando Pessoas</h2>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h5>Pessoa</h5>
+            <table class="table">
+                <thead>
+                <tr>
+                     <th>Foto</th>
+                    <th>Nome</th>
+                    <th>Sobre Nome</th>
+                    <th>Nome da Mãe</th>
+                    <th>CPF</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for pessoa in pessoas %}
+                {%for pessoafoto in pessoafotos %}
+                {%if pessoa.id == pessoafoto.pessoa.id%}
+                <tr>
+                   <td>foto<img src="{{pessoafoto.pessoa.image.url }}" width="240"></td>
+                   <td><a href="descricao/{{pessoa.id}}">{{pessoa.nome }}</a></td>
+                    <td>{{pessoa.sobrenome}}</td>
+                    <td>{{pessoa.mae}}</td>
+                    <td>{{pessoa.cpf }}</td>
+
+                </tr>
+
+
+                {%endif%}
+                {%endfor%}
+                {%endfor%}
+
+
+
+                </tbody>
+
+
+
+
+            </table>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+{%endblock%}
